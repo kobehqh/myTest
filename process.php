@@ -45,7 +45,7 @@
 <div class="container" style="display: block">
     <div class="item">
         <div class="item-left">
-            <img src="images/pic-1.png" alt="">
+            <img src="images/mygoal.jpg" alt="">
         </div>
         <div class="item-right">
             <div class="item-right-top">

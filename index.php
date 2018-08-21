@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
     <!--CSS-->
     <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_509679_4ipd8rb5qku.css">
     <link rel="stylesheet" href="css/index.css?x=6">
     <!--JS-->
     <script type="text/javascript" src="js/responsive.js"></script>
@@ -26,7 +27,12 @@
     <!--WEUI JS-->
     <script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
     <style>
-
+        .weui-mask, .weui-popup-container, .weui-popup-overlay{
+            z-index: 9999;
+        }
+        .weui-dialog, .weui-toast{
+            z-index: 10000;
+        }
     </style>
 </head>
 <body class="bg">
@@ -36,6 +42,16 @@
     </div>
 </header>
 <div class="container">
+    <div class="item">
+        <div class="selectUsername">
+            <div class="selectUsername-detail">
+                <input type="text" name="username" id="username" placeholder="请输入您的详细信息" onfocus="this.blur()" readonly >
+            </div>
+            <div class="pullDown">
+                <img src="images/select-car.png" alt="" style="display: block;height:0.8rem">
+            </div>
+        </div>
+    </div>
     <div class="item">
         <div class="selectCar">
             <div class="selectCar-detail">
@@ -103,7 +119,55 @@
 <!--        <div class="bottom-btn-submit">提交</div>-->
 <!--    </div>-->
 </footer>
+<aside class="succeed userMsg" style="width:80%;border-radius: 10px;position: relative;">
+    <div class="choose">
+        <p>请输入您的详细信息</p>
+        <div class="item1">
+            <div class="left">
+                <i class="iconfont icon-xingming"></i>
+            </div>
+            <div class="middle">
+                <div>姓</div>
+                <div>名：</div>
+
+            </div>
+            <div class="right">
+                <input type="text"  placeholder="请输入报修人姓名" name="name"/>
+            </div>
+        </div>
+        <div class="item1">
+            <div class="left">
+                <i class="iconfont icon-shouji"></i>
+            </div>
+            <div class="middle">
+                <div>手</div>
+                <div>机：</div>
+            </div>
+            <div class="right">
+                <input type="tel"  placeholder="请输入手机号" name="phone"/>
+            </div>
+        </div>
+
+        <div class="item1">
+            <div class="left">
+                <i class="iconfont icon-shenqing-"></i>
+            </div>
+            <div class="middle">
+                <div>地</div>
+                <div>址：</div>
+            </div>
+            <div class="right">
+                <input type="text"  placeholder="请输入详细地址" name="address"/>
+            </div>
+        </div>
+
+        <div class="sure">
+            <input type="submit" value="确定" class="closePopup">
+        </div>
+    </div>
+</aside>
 </body>
+<script src="js/jquery.bpopup.js"></script>
 <script>
     $(function() {
         $('#photo').change(function (e) {
@@ -136,8 +200,51 @@
 <script>
     $(function(){
         var h = document.documentElement.clientHeight || document.body.clientHeight;
+        var reg1 = /^[\u0391-\uFFE5A-Za-z]+$/;//姓名  只能中文或、英文正则表达式
+        var reg2 = /^[1][3,4,5,7,8][0-9]{9}$/; //11位手机号前三位判断格式
         $(".bg").css("min-height", h);
         $("#my-input").calendar();
+
+        $("#username").click(function(){
+            $('.succeed').bPopup({
+                opacity: 0.8,
+                modalClose:false,
+                positionStyle: 'fixed'
+            });
+        });
+
+        $(".sure").click(function(){
+            var orderName= $("input[name='name']").val();
+            var orderPhone=$("input[name='phone']").val();
+            var orderDate =$("input[name = 'address']").val();
+
+            if(orderName==""){
+                $.alert("姓名不得为空哦~");
+            }else{
+                if(reg1.test(orderName)){
+                    if(orderPhone==""){
+                        $.alert("手机号不得为空哦~");
+
+                    }else{
+                        if(reg2.test(orderPhone)){
+                            if (orderDate == ""){
+                                $.alert("请输入地址哦~");
+                            }else {
+                                $('.succeed').bPopup().close();
+                                $("input[name='username']").val($("input[name='name']").val() + "  " +  $("input[name='phone']").val());
+                            }
+                        }else{
+                            $.alert("请输入正确的手机号哦~");
+
+                        }
+                    }
+                }else{
+                    $.alert("姓名只能是中英文哦~");
+
+                }
+            }
+        });
+
     });
 
 </script>

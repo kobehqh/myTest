@@ -13,7 +13,8 @@ body img{
     width: 26.6666666rem;
     margin: auto;
 }
-.selectCar,.selectTime,.selectProblem{
+
+.selectCar,.selectTime,.selectProblem,.selectUsername{
     width: 100%;
     height: 3rem;
     display: flex;
@@ -21,6 +22,9 @@ body img{
     background-color: white;
     position: relative;
     margin-top: 1rem;
+}
+.selectCar{
+    margin-top: 2px;
 }
 .selectProblem{
     height: 8rem;
@@ -39,14 +43,14 @@ body img{
 .selectTime,.selectProblem{
     margin-top: 2px;
 }
-.selectCar-detail,.selectTime-detail,.selectProblem-detail{
+.selectCar-detail,.selectTime-detail,.selectProblem-detail,.selectUsername-detail{
     width: 100%;
     height: 3rem;
 }
 .selectProblem-detail{
     height: 8rem;
 }
-.selectCar-detail select,.selectTime-detail input,.selectProblem-detail textarea{
+.selectCar-detail select,.selectTime-detail input,.selectProblem-detail textarea,.selectUsername-detail input   {
     display: block;
     text-indent:1rem;
     outline: none;
@@ -172,4 +176,113 @@ body img{
     width: 100%;
     color: white;
     font-size: 1.1rem;
+}
+
+
+.succeed{
+    display: none;
+    width: 85%;
+    color:#2f2f2f;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius:15px;
+    text-align:center;
+    height:20.5rem;
+    position: relative;
+}
+.sure{
+    width:100%;
+    position: absolute;
+    bottom: 0;
+    background-color: #1aa0ff;
+    height:3rem;
+    line-height:3rem;
+    border-radius:0 0 10px 10px;
+}
+.sure input{
+    font-size: 1.1rem;
+    color: white;
+    text-align: center;
+}
+.sure input{
+    outline: none;
+    border: 0;
+    font-size: 1rem;
+    appearance: none;
+    background-color: transparent;
+    color: white;
+}
+.choose p{
+    color: #2a2a2a;
+    font-size: 1.2rem;
+    padding: 1.3rem 0 0.8rem;
+}
+.item1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+}
+.left{
+    width: 10%;
+}
+.left i{
+    color:  #1aa0ff;
+    font-size: 1.7rem;
+}
+.middle{
+    width:19%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+.middle{
+    color:  #1aa0ff;
+    font-size: 1.1rem;
+}
+.right{
+    width: 62%;
+}
+.right input{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 1px solid #1aa0ff;
+    border-radius:0.6rem;
+    height: 2.4rem;
+    width: 100%;
+    text-indent: 0.5rem;
+    font-size: 1rem;
+    outline:none;
+}
+.right_copy{
+    width: 62%;
+    display: flex;
+}
+.right_copy input{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius:0.6rem;
+    height: 2.4rem;
+
+}
+.input1{
+    border: 1px solid #1aa0ff;
+    width: 100%;
+    text-indent: 0.5rem;
+    font-size: 1rem;
+    outline: none;
+}
+.input2{
+    width: 45%;
+    border: none;
+    background-color:#1aa0ff;
+    text-align: center;
+    margin-left: -45%;
+    margin-top: 1px;
+    color: white;
+    background-color:#1aa0ff;
+    outline: none;
 }
